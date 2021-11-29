@@ -136,4 +136,10 @@ private function _login()
 			redirect('autentifikasi');
 		}
 	}
+
+	public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('autentifikasi');
+    }
 }
