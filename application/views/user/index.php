@@ -14,7 +14,7 @@
 				<div class="card-body">
 					<h5 class="card-title"><?= $user['nama']; ?></h5>
 					<p class="card-text"><?= $user['email']; ?></p>
-					<p class="card-text"><small class="text-muted">Jadi member sejak: <br><b><?= date('d F Y', 
+					<p class="card-text"><small class="text-muted">Menjadi member sejak : <br><b><?= date('d F Y', 
 					$user['tanggal_input']); ?></b></small></p>
 				</div>
 				<div class="btn btn-info ml-3 my-3">
