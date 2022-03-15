@@ -21,6 +21,11 @@
 				<!-- Nav Item - Dashboard -->
 				<li class="nav-item active">
 					<!-- Nav Item - Dashboard -->
+					<li class="nav-item active">
+						<a class="nav-link" href="<?= base_url('user'); ?>">
+							<i class="fas fa-fw fa-tachometer-alt"></i>
+							<span>Dashboard</span></a>
+						</li>
 					<li class="nav-item">
 						<a class="nav-link pb-0" href="<?= base_url('buku/kategori'); ?>">
 							<i class="fa fa-fw fa book"></i>

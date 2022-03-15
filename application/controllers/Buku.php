@@ -47,9 +47,6 @@ class Buku extends CI_Controller
 		//konfigurasi sebelum gambar diupload
 		$config['upload_path'] = './assets/img/upload/';
 		$config['allowed_types'] = 'jpg|png|jpeg';
-		$config['max_size'] = '3000';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '1000';
 		$config['file_name'] = 'img' . time();
 		$this->load->library('upload', $config);
 		if ($this->form_validation->run() == false) {
@@ -109,7 +106,7 @@ class Buku extends CI_Controller
 	{
 		$data['judul'] = 'Ubah Data Kategori';
 		$data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-		$data['kategori'] = $this->ModelBuku->kategoriWhere(['id' => $this->uri->segment(3)])->result_array();
+		$data['kategori'] = $this->ModelBuku->kategoriWhere(['id_kategori' => $this->uri->segment(3)])->result_array();
 
 		$this->form_validation->set_rules('kategori', 'Nama Kategori', 'required|min_length[3]', [
 			'required' => 'Nama Kategori harus diisi',
@@ -122,7 +119,7 @@ class Buku extends CI_Controller
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('buku/ubahkategori', $data);
-			$this->load->view('templates/footer');
+			$this->load->view('templates/footer', $data);
 		}
 		else
 		{
@@ -145,10 +142,9 @@ class Buku extends CI_Controller
 		$data['judul'] = 'Ubah Data Buku';
 		$data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 		$data['buku'] = $this->ModelBuku->bukuWhere(['id' => $this->uri->segment(3)])->result_array();
-		$kategori = $this->ModelBuku->joinKategoriBuku(['buku.id' => 
-			$this->uri->segment(3)])->result_array();
+		$kategori = $this->ModelBuku->joinKategoriBuku(['buku.id' => $this->uri->segment(3)])->result_array();
 		foreach ($kategori as $k) {
-			$data['id'] = $k['id_kategori'];
+			$data['id'] = $k['id'];
 			$data['k'] = $k['kategori'];
 		}
 		$data['kategori'] = $this->ModelBuku->getKategori()->result_array();

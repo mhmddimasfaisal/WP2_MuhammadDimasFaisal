@@ -55,7 +55,7 @@ role="dialog" aria-labelledby="kategoriBaruModalLabel" aria-hidden="true">
 		<form action="<?= base_url('buku/kategori'); ?>" method="post">
 			<div class="modal-body">
 				<div class="form-group">
-					<select name="kategori" class="form-control form-control-user">
+					<select name="nama_kategori" class="form-control form-control-user">
 						<option value="">Pilih Kategori</option>
 						<?php
 						$k = ['Sains','Hobby','Komputer','Komunikasi','Hukum','Agama','Populer','Bahasa','Komik'];
